@@ -15,4 +15,16 @@ describe('Utils', () => {
         Utils.pushNewStateToBehaviorState(bs, { three: true });
         expect(bs.getValue()).toEqual({ one: { two: 1 }, three: true });
     });
+    it('should generate state adn subscribe', async (done) => {
+        const state = { one: { two: 1 }, three: true };
+        const so = Utils.generateState(state);
+        so.setState({ three: false });
+        expect(so.getState()).toEqual({ one: { two: 1 }, three: false });
+        so.setState({ three: true });
+        expect(so.getState()).toEqual({ one: { two: 1 }, three: true });
+        so.subscribe((state) => {
+            expect(state).toEqual({ one: { two: 1 }, three: true });
+            done();
+        })
+    })
 })
