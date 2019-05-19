@@ -1,5 +1,4 @@
 import React from 'react';
-import { PersistentDrawer } from './Components/AppBar/PersistenDrawer/PersistentDrawer';
 import { StateAppBar } from './Components/AppBar/AppBar';
 import { StateDrawer } from './Components/Drawer/Drawer';
 import { CssBaseline } from '@material-ui/core';

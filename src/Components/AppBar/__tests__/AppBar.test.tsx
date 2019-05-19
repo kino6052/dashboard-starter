@@ -12,7 +12,8 @@ describe('AppBar', () => {
         wrapper = mount(<StateAppBarComponent/>);
         expect(wrapper.find("Toolbar").length).toEqual(1);
         expect(wrapper.find("Toolbar").prop("disableGutters")).toEqual(true);
-        // @ts-ignore
+        wrapper.find("IconButton").simulate("click");
+        expect(wrapper.find("Toolbar").prop("disableGutters")).toEqual(true);
         wrapper = mount(<StateAppBar/>);
         expect(wrapper.find("Toolbar").length).toEqual(1);
         expect(wrapper.find("Toolbar").prop("disableGutters")).toEqual(true);

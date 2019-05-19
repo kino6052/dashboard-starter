@@ -50,11 +50,7 @@ export const StateDrawerComponent = (props: {}) => {
     >
       <div className={classes.drawerHeader as string}>
         <IconButton onClick={onClickHandler}>
-          {theme!.direction === "ltr" ? (
-            <ChevronLeftIcon />
-          ) : (
             <ChevronRightIcon />
-          )}
         </IconButton>
       </div>
       <Divider />

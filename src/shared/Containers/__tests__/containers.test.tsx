@@ -27,5 +27,16 @@ describe('Containers', () => {
         const c = t.children().getElements()[0];
         expect(c.props.state).toEqual({ drawer: { open: false } });
         expect(c.props.updateState).toBeTruthy();
-    })
+    });
+    it("should correctly create HOC withState", () => {
+      const state = UIState.MenuState;
+      // @ts-ignore
+      const Test = withState<{}, {}, {}>(state, DummyComponent);
+      // @ts-ignore
+      const t = mount(<Test />);
+      // expect(t.getDOMNode()).toEqual('');
+      const c = t.children().getElements()[0];
+      c.props.updateState({ test: 1 });
+      expect(c.props.state).toEqual({ drawer: { open: false } });
+    });;
 })

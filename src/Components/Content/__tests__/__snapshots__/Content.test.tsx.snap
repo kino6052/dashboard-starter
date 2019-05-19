@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content should correctly render content 1`] = `ReactWrapper {}`;
+
+exports[`Content should correctly render content 2`] = `ReactWrapper {}`;
