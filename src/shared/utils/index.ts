@@ -3,7 +3,7 @@ import { Subject, BehaviorSubject, Subscription } from "rxjs";
 export interface IStateObject<T> {
     setState: (newState: { [K in keyof T]?: T[K]}) => void;
     getState: () => T;
-    subscribe: (cb: (...args: any[]) => void) => Subscription;
+    subscribe: (cb: (value: T) => void) => Subscription;
 }
 
 export class Utils {

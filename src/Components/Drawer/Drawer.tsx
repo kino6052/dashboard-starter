@@ -5,7 +5,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { StateProps } from '../../Shared/interfaces/PropTypes';
-import { IMenuState, DRAWER_WIDTH, UIState } from '../../Services/UIState/UIState';
+import { IMenuState, DRAWER_WIDTH, UIState, AppRoute } from '../../Services/UIState/UIState';
 import { withState } from '../../Shared/Containers';
 
 const styles = (theme: Theme) =>
@@ -36,6 +36,8 @@ export const StateDrawerComponent = (props: {}) => {
     state: { drawer: { open = false } = {} } = {}
   } = props as Props;
   const onClickHandler = () => updateState({ drawer: { open: false } });
+  const onLinkClick001 = () => UIState.RouterState.setState({ location: AppRoute.Home })
+  const onLinkClick002 = () => UIState.RouterState.setState({ location: AppRoute.Calendar })
   return (
     <Drawer
       className={classes.drawer as string}
@@ -56,27 +58,18 @@ export const StateDrawerComponent = (props: {}) => {
         </IconButton>
       </div>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <ListItem button onClick={onLinkClick001} key={1}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary={'Home'} />
+      </ListItem>
+      <ListItem button onClick={onLinkClick002} key={2}>
+        <ListItemIcon>
+          <MailIcon />
+        </ListItemIcon>
+        <ListItemText primary={'Calendar'} />
+      </ListItem>
     </Drawer>
   );
 };
